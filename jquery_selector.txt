@@ -1,0 +1,102 @@
+jQuery 中所有选择器都以美元符号开头：$()。
+
+元素选择器
+在页面中选取所有 <p> 元素:
+$("p")
+
+
+#id 选择器
+jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素。
+页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。
+通过 id 选取元素语法如下：
+$("#test")
+
+
+.class 选择器
+jQuery 类选择器可以通过指定的 class 查找元素。
+语法如下：
+$(".test")
+
+
+$("*")	选取所有元素
+$(this)	选取当前 HTML 元素
+$("p.intro")	选取 class 为 intro 的 <p> 元素
+$("p:first")	选取第一个 <p> 元素
+$("ul li:first")	选取第一个 <ul> 元素的第一个 <li> 元素
+$("ul li:first-child")	选取每个 <ul> 元素的第一个 <li> 元素
+$("[href]")	选取带有 href 属性的元素
+$("a[target='_blank']")	选取所有 target 属性值等于 "_blank" 的 <a> 元素
+$("a[target!='_blank']")	选取所有 target 属性值不等于 "_blank" 的 <a> 元素	
+$(":button")	选取所有 type="button" 的 <input> 元素 和 <button> 元素
+$("tr:even")	选取偶数位置的 <tr> 元素
+$("tr:odd")	选取奇数位置的 <tr> 元素
+
+
+独立文件中使用 jQuery 函数
+如果您的网站包含许多页面，并且您希望您的 jQuery 函数易于维护，那么请把您的 jQuery 函数放到独立的 .js 文件中。
+
+当我们在教程中演示 jQuery 时，会将函数直接添加到 <head> 部分中。不过，把它们放到一个单独的文件中会更好，就像这样（通过 src 属性来引用文件）：
+
+实例
+<head>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script src="my_jquery_functions.js"></script>
+</head>
+
+
+
+1.基本选择器
+$("#id")            //ID选择器
+$("div")            //元素选择器
+$(".classname")     //类选择器
+$(".classname,.classname1,#id1")     //组合选择器
+2.层次选择器
+ $("#id>.classname ")    //子元素选择器
+$("#id .classname ")    //后代元素选择器
+$("#id + .classname ")    //紧邻下一个元素选择器
+$("#id ~ .classname ")    //兄弟元素选择器
+3.过滤选择器(重点)
+$("li:first")    //第一个li
+$("li:last")     //最后一个li
+$("li:even")     //挑选下标为偶数的li
+$("li:odd")      //挑选下标为奇数的li
+$("li:eq(4)")    //下标等于 4 的li(第五个 li 元素)
+$("li:gt(2)")    //下标大于 2 的li
+$("li:lt(2)")    //下标小于 2 的li
+$("li:not(#runoob)") //挑选除 id="runoob" 以外的所有li
+3.2内容过滤选择器
+
+$("div:contains('Runob')")    // 包含 Runob文本的元素
+$("td:empty")                 //不包含子元素或者文本的空元素
+$("div:has(selector)")        //含有选择器所匹配的元素
+$("td:parent")                //含有子元素或者文本的元素
+3.3可见性过滤选择器
+
+$("li:hidden")       //匹配所有不可见元素，或type为hidden的元素
+$("li:visible")      //匹配所有可见元素
+3.4属性过滤选择器
+
+$("div[id]")        //所有含有 id 属性的 div 元素
+$("div[id='123']")        // id属性值为123的div 元素
+$("div[id!='123']")        // id属性值不等于123的div 元素
+$("div[id^='qq']")        // id属性值以qq开头的div 元素
+$("div[id$='zz']")        // id属性值以zz结尾的div 元素
+$("div[id*='bb']")        // id属性值包含bb的div 元素
+$("input[id][name$='man']") //多属性选过滤，同时满足两个属性的条件的元素
+3.5状态过滤选择器
+
+$("input:enabled")    // 匹配可用的 input
+$("input:disabled")   // 匹配不可用的 input
+$("input:checked")    // 匹配选中的 input
+$("option:selected")  // 匹配选中的 option
+4.表单选择器
+$(":input")      //匹配所有 input, textarea, select 和 button 元素
+$(":text")       //所有的单行文本框，$(":text") 等价于$("[type=text]")，推荐使用$("input:text")效率更高，下同
+$(":password")   //所有密码框
+$(":radio")      //所有单选按钮
+$(":checkbox")   //所有复选框
+$(":submit")     //所有提交按钮
+$(":reset")      //所有重置按钮
+$(":button")     //所有button按钮
+$(":file")       //所有文件域
